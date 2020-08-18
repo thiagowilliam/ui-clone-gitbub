@@ -3,6 +3,7 @@ import React from 'react';
 import * as S from './styles';
 
 import ProfileData from '../../components/ProfileData';
+import RepoCard from '../../components/RepoCard';
 
 const Profile: React.FC = () => {
   return (
@@ -22,7 +23,27 @@ const Profile: React.FC = () => {
           />
         </S.LeftSide>
         <S.RightSide>
-          <p>Right Side</p>
+          <S.Repos>
+            <h2>Radom repos</h2>
+
+            <div>
+              {[1, 2, 3, 4, 5, 6].map((n) => (
+                <RepoCard
+                  key={n}
+                  username="ThiagoWillaim"
+                  reponame="Um repositorio qualquer"
+                  description="Description repository whatever you want"
+                  language={n % 3 === 0 ? 'JavaScript' : 'TypeScript'}
+                  stars={4}
+                  forks={16}
+                />
+              ))}
+            </div>
+          </S.Repos>
+
+          <S.CalendarHeading>
+            Radom calendar (do not represent actual data)
+          </S.CalendarHeading>
         </S.RightSide>
       </S.Main>
     </S.Container>
