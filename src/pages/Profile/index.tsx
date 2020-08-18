@@ -4,6 +4,7 @@ import * as S from './styles';
 
 import ProfileData from '../../components/ProfileData';
 import RepoCard from '../../components/RepoCard';
+import RandomCalendar from '../../components/RandomCalendar';
 
 const Profile: React.FC = () => {
   return (
@@ -44,6 +45,8 @@ const Profile: React.FC = () => {
           <S.CalendarHeading>
             Radom calendar (do not represent actual data)
           </S.CalendarHeading>
+
+          <RandomCalendar />
         </S.RightSide>
       </S.Main>
     </S.Container>
