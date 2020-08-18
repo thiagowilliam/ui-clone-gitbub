@@ -5,7 +5,10 @@ import * as S from './styles';
 const Header: React.FC = () => {
   return (
     <S.Container>
-      <h1>Header</h1>
+      <S.GithubLogo />
+      <S.SearchForm>
+        <input type="text" placeholder="Enter Userbane or Repo" />
+      </S.SearchForm>
     </S.Container>
   );
 };
