@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 
 import * as S from './styles';
 
@@ -7,8 +8,34 @@ import RepoCard from '../../components/RepoCard';
 import RandomCalendar from '../../components/RandomCalendar';
 
 const Profile: React.FC = () => {
+  const { username = 'thiagowilliam' } = useParams();
+
+  useEffect(() => {
+    Promise.all([
+      fetch(`https://api.github.com/users/${username}`),
+      fetch(`https://api.github.com/users/${username}/repos`),
+    ]).then(async (responses) => {
+      console.log(responses);
+    });
+  }, [username]);
+
+  const TabContent = () => (
+    <div className="content">
+      <S.RepoIcon />
+      <span className="label">Repositories</span>
+      <span className="number">26</span>
+    </div>
+  );
   return (
     <S.Container>
+      <S.Tab className="desktop">
+        <div className="wrapper">
+          <span className="offset" />
+
+          <TabContent />
+        </div>
+        <span className="Line" />
+      </S.Tab>
       <S.Main>
         <S.LeftSide>
           <ProfileData
@@ -24,6 +51,10 @@ const Profile: React.FC = () => {
           />
         </S.LeftSide>
         <S.RightSide>
+          <S.Tab className="mobile">
+            <TabContent />
+            <span className="Line" />
+          </S.Tab>
           <S.Repos>
             <h2>Radom repos</h2>
 
